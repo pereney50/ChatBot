@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChefBot - Panel de Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'terracota': '#D2691E',
+                        'terracota-dark': '#B8541A',
+                        'mostaza': '#FFDB58',
+                        'mostaza-dark': '#E6C44F',
+                        'crema': '#F5F5DC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animaciones suaves para las interacciones */
+        .client-card {
+            transition: all 0.3s ease;
+        }
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(210, 105, 30, 0.2);
+        }
+        
+        /* Efecto de pulso para el logo principal */
+        .logo-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="bg-crema min-h-screen">
+    <div class="container mx-auto px-6 py-8 max-w-6xl">
+        
+        <div class="text-center mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-6 border-2 border-terracota">
+                <div id="main-logo" class="logo-pulse relative group">
+                    <div id="chefbot-logo-container">
+                        <img src="https://drive.google.com/thumbnail?id=1_55qelPFnxsoqHWnE41xdItmV4P_MT4W&sz=w2000" alt="ChefBot Logo" class="mx-auto w-24 h-24 mb-4 rounded-full object-cover border-4 border-terracota shadow-lg">
+                    </div>
+                    
+                    <h1 class="text-4xl font-bold text-terracota mb-2">ChefBot</h1>
+                    <p class="text-lg text-gray-600">Panel de Control de Clientes</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-mostaza rounded-xl p-6 text-center shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-800" id="total-clients">6</h3>
+                    <p class="text-gray-700">Clientes Activos</p>
+                </div>
+                <div class="bg-terracota rounded-xl p-6 text-center shadow-md text-white">
+                    <h3 class="text-2xl font-bold">24/7</h3>
+                    <p class="text-white opacity-90">Disponibilidad</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center shadow-md border-2 border-mostaza">
+                    <h3 class="text-2xl font-bold text-terracota">100%</h3>
+                    <p class="text-gray-700">Satisfacción</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-mostaza">
+            <h2 class="text-2xl font-bold text-terracota mb-8 text-center">Nuestros Clientes</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="clients-grid">
+                <div class="client-card bg-crema rounded-xl p-6 text-center cursor-pointer border-2 border-transparent hover:border-terracota relative group" 
+                    onclick="openClientUrl('https://n8n.atomks.com/webhook/29953d2d-3b70-4e37-9e30-2d574db2a198/chat')" 
+                    data-client="Tamales Doña Emi">
+                    <div class="w-20 h-20 mx-auto mb-4">
+                        <img src="https://drive.google.com/thumbnail?id=1YBfiIe_VwqVj_rcKHa-c669Y7iVHpI9l&sz=w2000" alt="Logo Tamales Doña Emi" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Tamales Doña Emi</h3>
+                    <p class="text-sm text-gray-600 mt-1">Comida mexicana</p>
+                </div>
+                
+                <div class="client-card bg-crema rounded-xl p-6 text-center cursor-pointer border-2 border-transparent hover:border-terracota relative group" 
+                    onclick="openClientUrl('https://salchiparce.com')" 
+                    data-client="Salchi Parce">
+                    <div class="w-20 h-20 mx-auto mb-4">
+                        <img src="https://drive.google.com/thumbnail?id=1np37rbikCQx0nlfBXQV91GbF8P4fsiUz&sz=w2000" alt="Logo Salchi Parce" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Salchi Parce</h3>
+                    <p class="text-sm text-gray-600 mt-1">Comida Colombiana</p>
+                </div>
+
+                <div class="client-card bg-crema rounded-xl p-6 text-center cursor-pointer border-2 border-transparent hover:border-terracota relative group" 
+                    onclick="openClientUrl('https://n8n.atomks.com/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat')" 
+                    data-client="Liberty Express">
+                    <div class="w-20 h-20 mx-auto mb-4">
+                        <img src="https://drive.google.com/thumbnail?id=1-Tp8fin8VS8DPtbCfw674p0Ggi1jqTtc&sz=w2000" alt="Logo Liberty Express" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Liberty Express</h3>
+                    <p class="text-sm text-gray-600 mt-1">Paquetería y Transporte</p>
+                </div>
+
+                <div class="client-card bg-crema rounded-xl p-6 text-center cursor-pointer border-2 border-transparent hover:border-terracota relative group" 
+                    onclick="openClientUrl('https://n8n.atomks.com/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat')" 
+                    data-client="Envios Happy">
+                    <div class="w-20 h-20 mx-auto mb-4">
+                        <img src="https://drive.google.com/thumbnail?id=1OzWv9OetMifpCn-flD1va77V1IV1oaaf&sz=w2000" alt="Logo Envios Happy" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Envios Happy</h3>
+                    <p class="text-sm text-gray-600 mt-1">Paquetería y Transporte</p>
+                </div>
+
+                <div class="client-card bg-crema rounded-xl p-6 text-center cursor-pointer border-2 border-transparent hover:border-terracota relative group" 
+                    onclick="openClientUrl('https://chefdpapel.com')" 
+                    data-client="Chef d' papel">
+                    <div class="w-20 h-20 mx-auto mb-4">
+                        <img src="https://drive.google.com/thumbnail?id=1xCDqiyIYUIku8w2IObJxrN8rupv20FU4&sz=w2000" alt="Logo Chef d' papel" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Chef d' papel</h3>
+                    <p class="text-sm text-gray-600 mt-1">Empaques Horeca</p>
+                </div>
+
+                <div class="client-card bg-crema rounded-xl p-6 text-center cursor-pointer border-2 border-transparent hover:border-terracota relative group" 
+                    onclick="openClientUrl('https://gastrobrand.com')" 
+                    data-client="Gastro Brand Marketing y Bot">
+                    <div class="w-20 h-20 mx-auto mb-4">
+                        <img src="https://drive.google.com/thumbnail?id=10AOt8jUYCz_BP6PZF7VHyFEedBSozWes&sz=w2000" alt="Logo Gastro Brand Marketing y Bot" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Gastro Brand Marketing y Bot</h3>
+                    <p class="text-sm text-gray-600 mt-1">Marketing y Bot</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-8 bg-terracota rounded-2xl p-8 text-white">
+            <h2 class="text-2xl font-bold mb-6 text-center">Panel de Administración</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <button onclick="showAddClientForm()" class="bg-mostaza text-gray-800 px-6 py-3 rounded-xl font-semibold hover:bg-mostaza-dark transition-colors">
+                    ➕ Agregar Cliente
+                </button>
+                <button onclick="refreshDashboard()" class="bg-white text-terracota px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                    🔄 Actualizar Panel
+                </button>
+                <button onclick="exportClientList()" class="bg-terracota-dark text-white px-6 py-3 rounded-xl font-semibold hover:bg-opacity-80 transition-colors">
+                    📊 Exportar Lista
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="addClientModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-terracota mb-6">Agregar Nuevo Cliente</h3>
+            <form id="addClientForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Nombre del Cliente</label>
+                    <input type="text" id="clientName" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="Ej: Restaurante ABC">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">URL del Cliente</label>
+                    <input type="url" id="clientUrl" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="https://ejemplo.com">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Categoría</label>
+                    <input type="text" id="clientCategory" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="Ej: Comida Italiana">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Logo/Imagen (URL)</label>
+                    <input type="url" id="clientLogo" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="https://ejemplo.com/logo.png (opcional)">
+                    <p class="text-sm text-gray-500 mt-1">Deja vacío para usar la primera letra del nombre</p>
+                </div>
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 bg-terracota text-white px-6 py-3 rounded-xl font-semibold hover:bg-terracota-dark transition-colors">
+                        Agregar Cliente
+                    </button>
+                    <button type="button" onclick="closeAddClientForm()" class="flex-1 bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-400 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="logoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-terracota mb-6">Cambiar Logo de ChefBot</h3>
+            <form id="logoForm">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">URL de la Imagen</label>
+                    <input type="url" id="chefbotLogoUrl" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="https://ejemplo.com/chefbot-logo.png">
+                    <p class="text-sm text-gray-500 mt-2">Pega aquí la URL de tu imagen de ChefBot</p>
+                </div>
+                
+                <div class="mb-6 text-center">
+                    <p class="text-gray-700 font-semibold mb-2">Vista Previa:</p>
+                    <div id="logo-preview" class="w-24 h-24 mx-auto border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-400 text-sm">Sin imagen</span>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 bg-terracota text-white px-6 py-3 rounded-xl font-semibold hover:bg-terracota-dark transition-colors">
+                        Cambiar Logo
+                    </button>
+                    <button type="button" onclick="resetToDefaultLogo()" class="bg-mostaza text-gray-800 px-6 py-3 rounded-xl font-semibold hover:bg-mostaza-dark transition-colors">
+                        Restaurar
+                    </button>
+                    <button type="button" onclick="closeLogoForm()" class="flex-1 bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-400 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editClientModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-terracota mb-6">Editar Cliente</h3>
+            <form id="editClientForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Nombre del Cliente</label>
+                    <input type="text" id="editClientName" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="Ej: Restaurante ABC">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">URL del Cliente</label>
+                    <input type="url" id="editClientUrl" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="https://ejemplo.com">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Categoría</label>
+                    <input type="text" id="editClientCategory" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="Ej: Comida Italiana">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Logo/Imagen (URL)</label>
+                    <input type="url" id="editClientLogo" class="w-full px-4 py-2 border-2 border-mostaza rounded-lg focus:outline-none focus:border-terracota" placeholder="https://ejemplo.com/logo.png (opcional)">
+                    <p class="text-sm text-gray-500 mt-1">Deja vacío para usar la primera letra del nombre</p>
+                </div>
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 bg-terracota text-white px-6 py-3 rounded-xl font-semibold hover:bg-terracota-dark transition-colors">
+                        Guardar Cambios
+                    </button>
+                    <button type="button" onclick="deleteClient()" class="bg-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-600 transition-colors">
+                        🗑️
+                    </button>
+                    <button type="button" onclick="closeEditClientForm()" class="flex-1 bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-400 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de clientes (URL's actualizadas)
+        let clientsData = {
+            "Tamales Doña Emi": {
+                url: "https://n8n.atomks.com/webhook/29953d2d-3b70-4e37-9e30-2d574db2a198/chat",
+                category: "Comida mexicana",
+                logo: "https://drive.google.com/thumbnail?id=1YBfiIe_VwqVj_rcKHa-c669Y7iVHpI9l&sz=w2000",
+                color: null
+            },
+            "Salchi Parce": {
+                url: "https://salchiparce.com",
+                category: "Comida Colombiana",
+                logo: "https://drive.google.com/thumbnail?id=1np37rbikCQx0nlfBXQV91GbF8P4fsiUz&sz=w2000",
+                color: null
+            },
+            "Liberty Express": {
+                url: "https://n8n.atomks.com/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat",
+                category: "Paquetería y Transporte",
+                logo: "https://drive.google.com/thumbnail?id=1-Tp8fin8VS8DPtbCfw674p0Ggi1jqTtc&sz=w2000",
+                color: null
+            },
+            "Envios Happy": {
+                url: "https://n8n.atomks.com/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat",
+                category: "Paquetería y Transporte",
+                logo: "https://drive.google.com/thumbnail?id=1OzWv9OetMifpCn-flD1va77V1IV1oaaf&sz=w2000",
+                color: null
+            },
+            "Chef d' papel": {
+                url: "https://chefdpapel.com",
+                category: "Empaques Horeca",
+                logo: "https://drive.google.com/thumbnail?id=1xCDqiyIYUIku8w2IObJxrN8rupv20FU4&sz=w2000",
+                color: null
+            },
+            "Gastro Brand Marketing y Bot": {
+                url: "https://gastrobrand.com",
+                category: "Marketing y Bot",
+                logo: "https://drive.google.com/thumbnail?id=10AOt8jUYCz_BP6PZF7VHyFEedBSozWes&sz=w2000",
+                color: null
+            }
+        };
+
+        // Funciones (sin cambios)
+        function openClientUrl(url) {
+            event.target.closest('.client-card').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.closest('.client-card').style.transform = '';
+            }, 150);
+            
+            window.open(url, '_blank');
+            showNotification('Abriendo sitio web del cliente...');
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-terracota text-white px-6 py-3 rounded-xl shadow-lg z-50 transform translate-x-full transition-transform';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(full)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function showAddClientForm() {
+            document.getElementById('addClientModal').classList.remove('hidden');
+            document.getElementById('addClientModal').classList.add('flex');
+        }
+
+        function closeAddClientForm() {
+            document.getElementById('addClientModal').classList.add('hidden');
+            document.getElementById('addClientModal').classList.remove('flex');
+            document.getElementById('addClientForm').reset();
+        }
+
+        function refreshDashboard() {
+            showNotification('Panel actualizado correctamente');
+            document.querySelector('#clients-grid').style.opacity = '0.5';
+            setTimeout(() => {
+                document.querySelector('#clients-grid').style.opacity = '1';
+            }, 500);
+        }
+
+        function exportClientList() {
+            const clients = Object.keys(clientsData);
+            const csvContent = "Cliente,URL,Categoría,Logo\n" + 
+                clients.map(client => {
+                    const data = clientsData[client];
+                    return `${client},${data.url},${data.category},${data.logo || 'Sin logo'}`;
+                }).join("\n");
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            if (link.download !== undefined) { // Feature detection
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", "lista_clientes_chefbot.csv");
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            showNotification('Lista de clientes exportada');
+        }
+    </script>
+</body>
+</html>
