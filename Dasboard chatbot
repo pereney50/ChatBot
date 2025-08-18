@@ -288,32 +288,32 @@
         // Cargar datos de localStorage o usar los predeterminados
         let clientsData = JSON.parse(localStorage.getItem('chefbot-clients')) || {
             "Tamales Doña Emi": {
-                url: "https://n8n.atomks.com/webhook/29953d2d-3b70-4e37-9e30-2d574db2a198/chat",
+                url: "https://n8n.srv962824.hstgr.cloud/webhook/29953d2d-3b70-4e37-9e30-2d574db2a198/chat",
                 category: "Comida mexicana",
                 logo: "https://drive.google.com/thumbnail?id=1YBfiIe_VwqVj_rcKHa-c669Y7iVHpI9l&sz=w2000"
             },
             "Salchi Parce": {
-                url: "https://salchiparce.com",
+                url: "https://n8n.srv962824.hstgr.cloud/webhook/4115d446-a98b-4872-bd9c-2bbcde6aeb9f/chat",
                 category: "Comida Colombiana",
                 logo: "https://drive.google.com/thumbnail?id=1np37rbikCQx0nlfBXQV91GbF8P4fsiUz&sz=w2000"
             },
             "Liberty Express": {
-                url: "https://n8n.atomks.com/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat",
+                url: "https://n8n.srv962824.hstgr.cloud/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat",
                 category: "Paquetería y Transporte",
                 logo: "https://drive.google.com/thumbnail?id=1-Tp8fin8VS8DPtbCfw674p0Ggi1jqTtc&sz=w2000"
             },
             "Envios Happy": {
-                url: "https://n8n.atomks.com/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat",
+                url: "https://n8n.srv962824.hstgr.cloud/webhook/ad5d1028-a181-414d-833a-67740466f2a4/chat",
                 category: "Paquetería y Transporte",
                 logo: "https://drive.google.com/thumbnail?id=1OzWv9OetMifpCn-flD1va77V1IV1oaaf&sz=w2000"
             },
             "Chef d' papel": {
-                url: "https://chefdpapel.com",
+                url: "https://n8n.srv962824.hstgr.cloud/webhook/cd9235fc-471f-4d24-8265-f55db7a3c340/chat",
                 category: "Empaques Horeca",
                 logo: "https://drive.google.com/thumbnail?id=1xCDqiyIYUIku8w2IObJxrN8rupv20FU4&sz=w2000"
             },
             "Gastro Brand Marketing y Bot": {
-                url: "https://gastrobrand.com",
+                url: "https://n8n.srv962824.hstgr.cloud/webhook/cd9235fc-471f-4d24-8265-f55db7a3c340/chat",
                 category: "Marketing y Bot",
                 logo: "https://drive.google.com/thumbnail?id=10AOt8jUYCz_BP6PZF7VHyFEedBSozWes&sz=w2000"
             }
