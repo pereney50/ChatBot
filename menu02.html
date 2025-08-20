@@ -64,7 +64,7 @@
             <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-6 border-2 border-terracota">
                 <div id="main-logo" class="logo-pulse relative group cursor-pointer" onclick="showLogoForm()">
                     <div id="chefbot-logo-container" class="flex flex-col items-center">
-                        <img src="https://drive.google.com/thumbnail?id=1_55qelPFnxsoqHWnE41xdItmV4P_MT4W&sz=w2000" 
+                        <img src="https://drive.google.com/thumbnail?id=1ldyztOOnSkSCubwPM8Q3Q2BYKf4t9Jhz\&sz=w2000](https://www.google.com/search?q=https://drive.google.com/thumbnail%3Fid%3D1ldyztOOnSkSCubwPM8Q3Q2BYKf4t9Jhz%26sz%3Dw2000" 
                              alt="ChefBot Logo" 
                              class="mx-auto w-20 h-20 md:w-24 md:h-24 mb-3 md:mb-4 rounded-full object-cover border-4 border-terracota shadow-lg hover:border-mostaza transition-colors">
                         <h1 class="text-3xl md:text-4xl font-bold text-terracota mb-1 md:mb-2">ChefBot</h1>
@@ -726,8 +726,43 @@
         function saveClientsToStorage() {
             localStorage.setItem('chefbot-clients', JSON.stringify(clientsData));
         }
-    </script>
+    
+    
+</script>	
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+	webhookUrl: 'https://n8n.srv962824.hstgr.cloud/webhook/6df6cc09-b943-4368-a00a-b245e10b4bfe/chat',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'en',
+	initialMessages: [
+		'Hola! 👋',
+		'Mi nombre es NexusChat que deseas hoy?'
+	],
+	i18n: {
+		en: {
+			title: 'NexusChat! 👋',
+			subtitle: "Tu asistente en lecheria 24/7.",
+			footer: '',
+			getStarted: 'Nueva',
+			inputPlaceholder: 'pregunta..',
+		},
+	},
+	enableStreaming: false,
+});
+</script>
+	
 </body>
 </html>
-
-
