@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lechería Vive - Paraíso en Anzoátegui, Venezuela</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-oceano: #0077B6;
+            --azul-claro: #00B4D8;
+            --arena: #F4A261;
+            --dorado: #E9C46A;
+            --blanco: #FFFFFF;
+            --blanco-suave: #F8F9FA;
+            --verde: #2A9D8F;
+            --coral: #E76F51;
+            --gris-oscuro: #2F3E46;
+            --gris: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--azul-oceano);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--coral);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gris-oscuro);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul-oceano);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--azul-oceano);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--coral);
+            color: white;
+            border: 2px solid var(--coral);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 2px solid var(--blanco);
+        }
+
+        /* Sección de Cuadrícula */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--azul-oceano);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gris);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .grid-section {
+            padding: 80px 0;
+            background-color: var(--blanco-suave);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .grid-item {
+            background: var(--blanco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .grid-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .grid-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .grid-item:hover .grid-img img {
+            transform: scale(1.1);
+        }
+
+        .grid-content {
+            padding: 20px;
+        }
+
+        .grid-content h3 {
+            color: var(--azul-oceano);
+            margin-bottom: 10px;
+        }
+
+        /* Galería */
+        .gallery {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--blanco-suave), var(--blanco));
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Noticias */
+        .news {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-img {
+            height: 200px;
+        }
+
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-content h3 {
+            color: var(--azul-oceano);
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            color: var(--gris);
+            margin-bottom: 15px;
+        }
+
+        .news-date {
+            color: var(--coral);
+            font-weight: 500;
+        }
+
+        /* Testimonios */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--blanco), var(--azul-claro));
+            text-align: center;
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gris-oscuro);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--azul-oceano);
+        }
+
+        .testimonial-nav {
+            margin-top: 20px;
+        }
+
+        .testimonial-nav button {
+            background: var(--blanco);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .testimonial-nav button:hover {
+            background: var(--azul-oceano);
+            color: var(--blanco);
+        }
+
+        /* CTA Final */
+        .cta-final {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1465310477141-6fb93167a273?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco);
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-final p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--blanco);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--blanco);
+            color: var(--azul-oceano);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gris-oscuro);
+            color: var(--blanco);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--dorado);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--dorado);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--blanco);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--azul-oceano);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--blanco);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .grid-container,
+            .gallery-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Inforiente-<span>Lechería</span></a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Playas</a></li>
+                <li><a href="#">Gastronomía</a></li>
+                <li><a href="#">Compras</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Lechería Vive: Sabor, Sol y Serenidad</h1>
+            <p>Descubre la joya del Caribe venezolano. Playas exuberantes, la mejor gastronomía y un ambiente único te esperan.</p>
+            <a href="#" class="btn btn-primary">¡Explora Nuestro Paraíso!</a>
+        </div>
+    </section>
+
+    <!-- Sección de Cuadrícula -->
+    <section class="grid-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por qué visitar Lechería?</h2>
+                <p>Descubre todo lo que nuestra hermosa ciudad costera tiene para ofrecerte</p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="grid-img">
+                        <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Playa en Lechería">
+                    </div>
+                    <div class="grid-content">
+                        <h3>Playas de Ensueño</h3>
+                        <p>Relájate en las aguas cristalinas de Playa Cangrejo o disfruta del ambiente familiar de Playa Cumanagoto.</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-img">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gastronomía de Lechería">
+                    </div>
+                    <div class="grid-content">
+                        <h3>Sabor a Mar</h3>
+                        <p>Deleita tu paladar con los frutos del mar más frescos: langosta al ajillo, ceviches, pescado frito y mucho más.</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="grid-img">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artesanías de Lechería">
+                    </div>
+                    <div class="grid-content">
+                        <h3>Compras con Encanto</h3>
+                        <p>Lleva un pedazo de Lechería contigo. Artesanías, recuerdos y productos locales únicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Así se vive en Lechería</h2>
+                <p>Un vistazo a la experiencia única que te espera en nuestro paraíso costero</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Langosta">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1508317824424-51a1e9d4f71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Playa con botes">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Familia en la playa">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27a3c8d2c5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artesanías">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cóctel en la playa">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atardecer en Lechería">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias y Eventos -->
+    <section class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>Noticias y Eventos</h2>
+                <p>Mantente al día con lo último que ocurre en Lechería</p>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Festival de la Langosta">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">15 Nov, 2024</span>
+                        <h3>Festival de la Langosta 2024</h3>
+                        <p>No te pierdas el evento gastronómico más esperado del año. Disfruta de las mejores preparaciones de langosta en el malecón de Lechería.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1560114928-5f538e6e98f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tortugas marinas">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">2 Oct, 2024</span>
+                        <h3>Nueva Temporada de Tortugas</h3>
+                        <p>Llega la temporada de anidación de tortugas marinas. Participa en nuestros programas de conservación y avistamiento responsable.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Oferta especial">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">28 Sep, 2024</span>
+                        <h3>Oferta Especial en "Restaurante La Bahía"</h3>
+                        <p>Aprovecha un 20% de descuento en el menú ejecutivo de martes a jueves. Disfruta de la mejor vista al mar con sabores auténticos.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experiencias Reales</h2>
+                <p>Lo que nuestros visitantes dicen sobre su experiencia en Lechería</p>
+            </div>
+            
+            <div class="testimonial-container">
+                <div class="testimonial active">
+                    <p class="testimonial-text">"¡Increíble! Las playas son un remanso de paz y la comida... simplemente espectacular. Volveremos sin duda."</p>
+                    <p class="testimonial-author">Carlos M., Colombia</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"El trato de la gente y la calidad de los productos artesanales superó todas mis expectativas. Lechería tiene magia."</p>
+                    <p class="testimonial-author">Ana S., España</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"El atardecer en Playa Cangrejo es algo que todos deberían experimentar al menos una vez en la vida. Absolutamente mágico."</p>
+                    <p class="testimonial-author">Miguel R., Venezuela</p>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <div class="container">
+            <h2>Tu Escape Perfecto Te Espera</h2>
+            <p>Planifica tu viaje, consulta guías de restaurantes o encuentra los mejores lugares para comprar. Todo lo que necesitas para disfrutar al máximo de Lechería está aquí.</p>
+            <a href="#" class="btn btn-secondary">Comenzar a Planificar</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Lechería Vive</h3>
+                    <p>El portal turístico, gastronómico y comercial de Lechería, Anzoátegui, Venezuela.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Playas</a></li>
+                        <li><a href="#">Gastronomía</a></li>
+                        <li><a href="#">Compras</a></li>
+                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contacto</h3>
+                    <p>info@lecheriavive.com</p>
+                    <p>+58 XXX-XXX-XXXX</p>
+                    <p>Lechería, Estado Anzoátegui, Venezuela</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 Lechería Vive. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Testimonial Slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const prevBtn = document.querySelector('.testimonial-prev');
+        const nextBtn = document.querySelector('.testimonial-next');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            testimonials[index].classList.add('active');
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        // Auto slide testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+    </script>
+
+	<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+	<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+	webhookUrl: 'https://n8n.srv962824.hstgr.cloud/webhook/6df6cc09-b943-4368-a00a-b245e10b4bfe/chat',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'en',
+	initialMessages: [
+		'Hola! 👋',
+		'Soy NexusChat en que te ayudo hoy?'
+	],
+	i18n: {
+		en: {
+			title: 'NexusChat! 👋',
+			subtitle: "Tu asistente en lecheria 24/7.",
+			footer: '',
+			getStarted: 'Ahora',
+			inputPlaceholder: 'pregunta..',
+		},
+	},
+	enableStreaming: false,
+});
+</script>
+</body>
+</html>
